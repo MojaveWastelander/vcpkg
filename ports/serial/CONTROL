@@ -1,0 +1,3 @@
+Source: serial
+Version: 1.2.1
+Description: Cross-platform library for interfacing with rs-232 serial like ports.
