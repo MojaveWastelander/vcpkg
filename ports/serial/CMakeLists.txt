@@ -32,7 +32,7 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY INTERFACE_${PROJECT_NAME}_MAJOR_VER
 set_property(TARGET ${PROJECT_NAME} APPEND PROPERTY COMPATIBLE_INTERFACE_STRING ${PROJECT_NAME}_MAJOR_VERSION)
 
 if(APPLE)
-    target_link_libraries(${PROJECT_NAME} ${FOUNDATION_LIBRARY} ${IOKIT_LIBRARY})
+    target_link_libraries(${PROJECT_NAME})
 elseif(UNIX)
     target_link_libraries(${PROJECT_NAME} rt pthread)
 else()
@@ -49,7 +49,7 @@ install(TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}Targets
 )
 
 ## Install headers
-install(FILES include/serial/serial.h include/serial/v8stdint.h
+install(DIRECTORY include/serial DESTINATION include)
 
 ## Create package
 include(CMakePackageConfigHelpers)
