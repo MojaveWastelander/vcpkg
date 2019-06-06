@@ -1,0 +1,17 @@
+# - Config file for the serial package
+# It defines the following variables
+#  serial_INCLUDE_DIRS - include directories for serial
+#  serial_LIBRARIES    - libraries to link against
+
+# Compute paths
+get_filename_component(serial_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+set(serial_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
+
+# Our library dependencies (contains definitions for IMPORTED targets)
+if(NOT TARGET serial AND NOT serial_BINARY_DIR)
+  include("${serial_CMAKE_DIR}/serialTargets.cmake")
+endif()
+
+# These are IMPORTED targets created by serialTargets.cmake
+set(serial_LIBRARIES serial)
+include(${CMAKE_CURRENT_LIST_DIR}/serial-targets.cmake)
